@@ -1,5 +1,6 @@
 "use client";
 import { useRouter, usePathname } from "next/navigation";
+import { useEffect } from "react";
 import Link from "next/link";
 
 const Nav = () => {
@@ -48,6 +49,13 @@ const Nav = () => {
       setTimeout(triggerPageTransition, 0);
     }
   };
+
+  // Prefetch rutas para navegación más rápida
+  useEffect(() => {
+    router.prefetch("/work");
+    router.prefetch("/studio");
+    router.prefetch("/contact");
+  }, [router]);
 
   return (
     <div className="nav">

@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import SplitText from "gsap/SplitText";
 import ReactLenis from "lenis/react";
+import Image from "next/image";
 
 gsap.registerPlugin(SplitText);
 
@@ -37,10 +38,18 @@ export default function WorkClient() {
           <h1>selected work</h1>
 
           <div className="projects">
-            <img src="/img1.jpg" alt="" />
-            <img src="/img2.jpg" alt="" />
-            <img src="/img3.jpg" alt="" />
-            <img src="/img4.jpg" alt="" />
+            <div className="project-img" style={{ position: "relative", width: "100%" }}>
+              <Image src="/img1.jpg" alt="Project 1" fill sizes="(max-width: 900px) 90vw, 32vw" />
+            </div>
+            <div className="project-img" style={{ position: "relative", width: "100%" }}>
+              <Image src="/img2.jpg" alt="Project 2" fill sizes="(max-width: 900px) 90vw, 32vw" />
+            </div>
+            <div className="project-img" style={{ position: "relative", width: "100%" }}>
+              <Image src="/img3.jpg" alt="Project 3" fill sizes="(max-width: 900px) 90vw, 32vw" />
+            </div>
+            <div className="project-img" style={{ position: "relative", width: "100%" }}>
+              <Image src="/img4.jpg" alt="Project 4" fill sizes="(max-width: 900px) 90vw, 32vw" />
+            </div>
           </div>
         </div>
       </ReactLenis>

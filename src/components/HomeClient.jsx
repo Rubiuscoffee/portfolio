@@ -4,6 +4,7 @@ import { useRevealer } from "@/hooks/useRevealer";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import SplitText from "gsap/SplitText";
+import Image from "next/image";
 
 gsap.registerPlugin(SplitText);
 
@@ -37,7 +38,15 @@ export default function HomeClient() {
         </div>
 
         <div className="hero-img">
-          <img src="/hero.jpg" alt="" />
+          <div className="hero-img-inner" style={{ position: "relative", width: "100%", height: "100%" }}>
+            <Image
+              src="/hero.jpg"
+              alt="Hero"
+              fill
+              priority
+              sizes="(max-width: 900px) 90vw, 95vw"
+            />
+          </div>
         </div>
       </div>
     </>
