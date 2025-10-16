@@ -6,6 +6,8 @@ const nextConfig = {
   experimental: {
     // Habilitar filesystem caching de Turbopack para desarrollo más rápido
     turbopackFileSystemCacheForDev: true,
+    // Habilitar View Transitions experimentales integradas en React/Next
+    viewTransition: true,
   },
 };
 

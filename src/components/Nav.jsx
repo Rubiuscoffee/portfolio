@@ -1,10 +1,9 @@
 "use client";
-import { useTransitionRouter } from "next-view-transitions";
-import { usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 
 const Nav = () => {
-  const router = useTransitionRouter();
+  const router = useRouter();
   const pathname = usePathname();
 
   function triggerPageTransition() {
@@ -31,9 +30,23 @@ const Nav = () => {
       return;
     }
 
-    router.push(path, {
-      onTransitionReady: triggerPageTransition,
-    });
+    e.preventDefault();
+
+    // Use native View Transitions if available
+    if (typeof document !== "undefined" && "startViewTransition" in document) {
+      const vt = document.startViewTransition(() => {
+        router.push(path);
+      });
+
+      vt.ready.then(() => {
+        triggerPageTransition();
+      });
+    } else {
+      // Fallback: navigate then trigger animation
+      router.push(path);
+      // Small delay to allow navigation
+      setTimeout(triggerPageTransition, 0);
+    }
   };
 
   return (

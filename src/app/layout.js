@@ -1,5 +1,5 @@
 import "./globals.css";
-import { ViewTransitions } from "next-view-transitions";
+import * as React from "react";
 import { GeistSans } from "geist/font/sans";
 
 import Nav from "@/components/Nav";
@@ -10,14 +10,15 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const Wrapper = React.unstable_ViewTransition || React.Fragment;
   return (
-    <ViewTransitions>
+    <Wrapper>
       <html lang="en" className={GeistSans.variable}>
         <body className={GeistSans.className}>
           <Nav />
           {children}
         </body>
       </html>
-    </ViewTransitions>
+    </Wrapper>
   );
 }
