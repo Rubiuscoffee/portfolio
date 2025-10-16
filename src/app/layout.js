@@ -1,5 +1,6 @@
 import "./globals.css";
 import { ViewTransitions } from "next-view-transitions";
+import { GeistSans } from "geist/font/sans";
 
 import Nav from "@/components/Nav";
 
@@ -11,8 +12,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <ViewTransitions>
-      <html lang="en">
-        <body>
+      <html lang="en" className={GeistSans.variable}>
+        <body className={GeistSans.className}>
           <Nav />
           {children}
         </body>

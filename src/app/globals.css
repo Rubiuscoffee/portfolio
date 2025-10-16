@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-
 :root {
   --bg: #fff;
   --fg: #0a0a0a;
@@ -12,8 +10,11 @@
 }
 
 body {
-  font-family: "TWK Lausanne", "Inter";
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   color: var(--fg);
+  font-feature-settings: "rlig" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 img {
@@ -83,7 +84,7 @@ p {
 }
 
 .home .header h1 {
-  font-size: 30.5vw;
+  font-size: 29vw;
   text-align: center;
 }
 
