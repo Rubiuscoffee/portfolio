@@ -83,9 +83,23 @@ p {
   width: 100%;
 }
 
-.home .header h1 {
+/*.home .header h1 {
   font-size: 29vw;
   text-align: center;
+*/
+.home .hero-img h1 {
+  font-size: 5vw;
+  text-align: left;
+  line-height: 1.2;
+  padding: 1rem;
+}
+
+.hero-img-inner h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
 }
 
 .home .hero-img {
@@ -93,7 +107,7 @@ p {
   left: 50%;
   bottom: 0%;
   transform: translateX(-50%);
-  width: 95%;
+  width: 100%;  /*95%*/
   height: 50vh;
   overflow: hidden;
 }

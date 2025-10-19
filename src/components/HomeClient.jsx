@@ -33,19 +33,24 @@ export default function HomeClient() {
     <>
       <div className="revealer"></div>
       <div className="home">
+        {/*
         <div className="header">
           <h1></h1>
         </div>
+        */}
 
         <div className="hero-img">
           <div className="hero-img-inner" style={{ position: "relative", width: "100%", height: "100%" }}>
-            <Image
+            {/*
+             <Image
               src="/hero.jpg"
               alt="Hero"
               fill
               priority
               sizes="(max-width: 900px) 90vw, 95vw"
             />
+            */}
+            <h1>Brayan is a creative developer based in Colombia, with a passion for building beautiful and functional websites.</h1>
           </div>
         </div>
       </div>
