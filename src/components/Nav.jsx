@@ -7,7 +7,7 @@ import './Nav.css';
 const navLinks = [
   { href: '/', label: 'home' },
   { href: '/work', label: 'projects' },
-  { href: '/studio', label: 'studio' },
+  { href: '/studio', label: 'stack' },
   { href: '/contact', label: 'contact' },
 ];
 
@@ -19,16 +19,16 @@ const Nav = () => {
     document.documentElement.animate(
       [
         {
-          clipPath: "polygon(25% 75%, 75% 75%, 75% 75%, 25% 75%)",
+          clipPath: 'polygon(25% 75%, 75% 75%, 75% 75%, 25% 75%)',
         },
         {
-          clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
+          clipPath: 'polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)',
         },
       ],
       {
         duration: 2000,
-        easing: "cubic-bezier(0.9, 0, 0.1, 1)",
-        pseudoElement: "::view-transition-new(root)",
+        easing: 'cubic-bezier(0.9, 0, 0.1, 1)',
+        pseudoElement: '::view-transition-new(root)',
       }
     );
   }
@@ -42,7 +42,7 @@ const Nav = () => {
     e.preventDefault();
 
     // Use native View Transitions if available
-    if (typeof document !== "undefined" && "startViewTransition" in document) {
+    if (typeof document !== 'undefined' && 'startViewTransition' in document) {
       const vt = document.startViewTransition(() => {
         router.push(path);
       });
@@ -60,28 +60,28 @@ const Nav = () => {
 
   // Prefetch rutas para navegación más rápida
   useEffect(() => {
-    router.prefetch("/work");
-    router.prefetch("/studio");
-    router.prefetch("/contact");
+    router.prefetch('/work');
+    router.prefetch('/studio');
+    router.prefetch('/contact');
   }, [router]);
 
   return (
-    <div className="nav">
-      <div className="col">
-        <div className="nav-logo">
+    <div className='nav'>
+      <div className='col'>
+        <div className='nav-logo'>
           <Link
             onClick={handleNavigation('/')}
-            href="/"
+            href='/'
             className={pathname === '/' ? 'active' : ''}>
             home
           </Link>
         </div>
       </div>
 
-      <div className="col">
-        <div className="nav-items">
+      <div className='col'>
+        <div className='nav-items'>
           {navLinks.slice(1).map((link) => (
-            <div className="nav-item" key={link.href}>
+            <div className='nav-item' key={link.href}>
               <Link
                 onClick={handleNavigation(link.href)}
                 href={link.href}
@@ -91,7 +91,7 @@ const Nav = () => {
             </div>
           ))}
         </div>
-        <div className="nav-copy">
+        <div className='nav-copy'>
           <p>co</p>
         </div>
       </div>
