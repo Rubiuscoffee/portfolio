@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
-import { sliderData } from "./sliderData";
+import { useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
+import { sliderData } from './sliderData';
 
 const Slider = () => {
   const sliderRef = useRef(null);
@@ -40,38 +40,38 @@ const Slider = () => {
     }
 
     function createSlideElement(index) {
-      const slide = document.createElement("div");
-      slide.className = "slide";
+      const slide = document.createElement('div');
+      slide.className = 'slide';
 
       if (state.isMobile) {
-        slide.style.width = "175px";
-        slide.style.height = "250px";
+        slide.style.width = '175px';
+        slide.style.height = '250px';
       }
 
-      const imageContainer = document.createElement("div");
-      imageContainer.className = "slide-image";
+      const imageContainer = document.createElement('div');
+      imageContainer.className = 'slide-image';
 
-      const img = document.createElement("img");
+      const img = document.createElement('img');
       const dataIndex = index % totalSlideCount;
       img.src = sliderData[dataIndex].img;
       img.alt = sliderData[dataIndex].title;
 
-      const overlay = document.createElement("div");
-      overlay.className = "slide-overlay";
+      const overlay = document.createElement('div');
+      overlay.className = 'slide-overlay';
 
-      const title = document.createElement("p");
-      title.className = "project-title";
+      const title = document.createElement('p');
+      title.className = 'project-title';
       title.textContent = sliderData[dataIndex].title;
 
-      const arrow = document.createElement("div");
-      arrow.className = "project-arrow";
+      const arrow = document.createElement('div');
+      arrow.className = 'project-arrow';
       arrow.innerHTML = `
-        <svg viewBox="0 0 24 24">
-          <path d="M7 17L17 7M17 7H7M17 7V17"/>
+        <svg viewBox='0 0 24 24'>
+          <path d='M7 17L17 7M17 7H7M17 7V17'/>
         </svg>
       `;
 
-      slide.addEventListener("click", (e) => {
+      slide.addEventListener('click', (e) => {
         e.preventDefault();
         if (state.dragDistance < 10 && !state.hasActuallyDragged) {
           router.push(sliderData[dataIndex].url);
@@ -88,10 +88,10 @@ const Slider = () => {
     }
 
     function initializeSlides() {
-      const track = sliderRef.current?.querySelector(".slide-track");
+      const track = sliderRef.current?.querySelector('.slide-track');
       if (!track) return;
 
-      track.innerHTML = "";
+      track.innerHTML = '';
       state.slides = [];
 
       checkMobile();
@@ -112,7 +112,7 @@ const Slider = () => {
     }
 
     function updateSlidePositions() {
-      const track = sliderRef.current?.querySelector(".slide-track");
+      const track = sliderRef.current?.querySelector('.slide-track');
       if (!track) return;
 
       const sequenceWidth = state.slideWidth * totalSlideCount;
@@ -140,8 +140,8 @@ const Slider = () => {
         state.hasActuallyDragged || !isSlowEnough || !hasBeenStillLongEnough;
 
       document.documentElement.style.setProperty(
-        "--slider-moving",
-        state.isMoving ? "1" : "0"
+        '--slider-moving',
+        state.isMoving ? '1' : '0'
       );
     }
 
@@ -242,30 +242,30 @@ const Slider = () => {
       const slider = sliderRef.current;
       if (!slider) return;
 
-      slider.addEventListener("wheel", handleWheel, { passive: false });
-      slider.addEventListener("touchstart", handleTouchStart);
-      slider.addEventListener("touchmove", handleTouchMove);
-      slider.addEventListener("touchend", handleTouchEnd);
-      slider.addEventListener("mousedown", handleMouseDown);
-      slider.addEventListener("mouseleave", handleMouseUp);
-      slider.addEventListener("dragstart", (e) => e.preventDefault());
+      slider.addEventListener('wheel', handleWheel, { passive: false });
+      slider.addEventListener('touchstart', handleTouchStart);
+      slider.addEventListener('touchmove', handleTouchMove);
+      slider.addEventListener('touchend', handleTouchEnd);
+      slider.addEventListener('mousedown', handleMouseDown);
+      slider.addEventListener('mouseleave', handleMouseUp);
+      slider.addEventListener('dragstart', (e) => e.preventDefault());
 
-      document.addEventListener("mousemove", handleMouseMove);
-      document.addEventListener("mouseup", handleMouseUp);
-      window.addEventListener("resize", handleResize);
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+      window.addEventListener('resize', handleResize);
 
       return () => {
-        slider.removeEventListener("wheel", handleWheel);
-        slider.removeEventListener("touchstart", handleTouchStart);
-        slider.removeEventListener("touchmove", handleTouchMove);
-        slider.removeEventListener("touchend", handleTouchEnd);
-        slider.removeEventListener("mousedown", handleMouseDown);
-        slider.removeEventListener("mouseleave", handleMouseUp);
-        slider.removeEventListener("dragstart", (e) => e.preventDefault());
+        slider.removeEventListener('wheel', handleWheel);
+        slider.removeEventListener('touchstart', handleTouchStart);
+        slider.removeEventListener('touchmove', handleTouchMove);
+        slider.removeEventListener('touchend', handleTouchEnd);
+        slider.removeEventListener('mousedown', handleMouseDown);
+        slider.removeEventListener('mouseleave', handleMouseUp);
+        slider.removeEventListener('dragstart', (e) => e.preventDefault());
 
-        document.removeEventListener("mousemove", handleMouseMove);
-        document.removeEventListener("mouseup", handleMouseUp);
-        window.removeEventListener("resize", handleResize);
+        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mouseup', handleMouseUp);
+        window.removeEventListener('resize', handleResize);
       };
     }
 
@@ -282,8 +282,8 @@ const Slider = () => {
   }, [router]);
 
   return (
-    <div className="slider" ref={sliderRef}>
-      <div className="slide-track"></div>
+    <div className='slider' ref={sliderRef}>
+      <div className='slide-track'></div>
     </div>
   );
 };
