@@ -13,14 +13,16 @@ export default function HomeClient() {
 
   useGSAP(() => {
     const splitText = SplitText.create("h1", {
-      type: "chars",
-      charsClass: "letter",
-      mask: "chars",
+      type: "lines",
+      linesClass: "line",
+      mask: "lines",
     });
 
-    gsap.set(splitText.chars, { y: "110%" });
+    
 
-    gsap.to(splitText.chars, {
+    gsap.set(splitText.lines, { y: "110%" });
+
+    gsap.to(splitText.lines, {
       y: "0%",
       duration: 1.5,
       stagger: 0.1,
@@ -50,7 +52,7 @@ export default function HomeClient() {
               sizes="(max-width: 900px) 90vw, 95vw"
             />
             */}
-            <h1>Brayan is a creative developer based in Colombia, with a passion for building beautiful and functional websites.</h1>
+            <h1>Brian is a creative developer based in Colombia, with a passion for building beautiful and functional websites.</h1>
           </div>
         </div>
       </div>

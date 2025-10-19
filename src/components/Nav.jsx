@@ -86,7 +86,7 @@ const Nav = () => {
           </div>
         </div>
         <div className="nav-copy">
-          <p>colombia</p>
+          <p>co</p>
         </div>
       </div>
     </div>
