@@ -62,7 +62,7 @@ const Nav = () => {
       <div className="col">
         <div className="nav-logo">
           <Link onClick={handleNavigation("/")} href="/">
-            nuvoro
+            home
           </Link>
         </div>
       </div>
@@ -71,7 +71,7 @@ const Nav = () => {
         <div className="nav-items">
           <div className="nav-item">
             <Link onClick={handleNavigation("/work")} href="/work">
-              work
+              projects
             </Link>
           </div>
           <div className="nav-item">
@@ -86,7 +86,7 @@ const Nav = () => {
           </div>
         </div>
         <div className="nav-copy">
-          <p>toronto, ca</p>
+          <p>colombia</p>
         </div>
       </div>
     </div>

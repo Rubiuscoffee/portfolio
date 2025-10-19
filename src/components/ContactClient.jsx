@@ -35,16 +35,16 @@ export default function ContactClient() {
         <div className="revealer"></div>
         <div className="contact">
           <div className="col">
-            <h2>Contacto</h2>
+            <h2>Contact</h2>
           </div>
           <div className="col">
             <div className="contact-copy">
-              <h2>Colaboraciones</h2>
+              <h2>Collaborations</h2>
               <h2>brian@rubiuscoffee.dev</h2>
             </div>
 
             <div className="contact-copy">
-              <h2>Consultas</h2>
+              <h2>Inquiries</h2>
               <h2>hello@rubiuscoffee.dev</h2>
             </div>
 
