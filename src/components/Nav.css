@@ -1,0 +1,4 @@
+.nav-logo .active,
+.nav-item .active {
+  text-decoration: underline;
+}

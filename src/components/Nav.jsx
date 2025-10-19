@@ -1,7 +1,15 @@
-"use client";
-import { useRouter, usePathname } from "next/navigation";
-import { useEffect } from "react";
-import Link from "next/link";
+'use client';
+import { useRouter, usePathname } from 'next/navigation';
+import { useEffect } from 'react';
+import Link from 'next/link';
+import './Nav.css';
+
+const navLinks = [
+  { href: '/', label: 'home' },
+  { href: '/work', label: 'projects' },
+  { href: '/studio', label: 'studio' },
+  { href: '/contact', label: 'contact' },
+];
 
 const Nav = () => {
   const router = useRouter();
@@ -61,7 +69,10 @@ const Nav = () => {
     <div className="nav">
       <div className="col">
         <div className="nav-logo">
-          <Link onClick={handleNavigation("/")} href="/">
+          <Link
+            onClick={handleNavigation('/')}
+            href="/"
+            className={pathname === '/' ? 'active' : ''}>
             home
           </Link>
         </div>
@@ -69,21 +80,16 @@ const Nav = () => {
 
       <div className="col">
         <div className="nav-items">
-          <div className="nav-item">
-            <Link onClick={handleNavigation("/work")} href="/work">
-              projects
-            </Link>
-          </div>
-          <div className="nav-item">
-            <Link onClick={handleNavigation("/studio")} href="/studio">
-              studio
-            </Link>
-          </div>
-          <div className="nav-item">
-            <Link onClick={handleNavigation("/contact")} href="/contact">
-              contact
-            </Link>
-          </div>
+          {navLinks.slice(1).map((link) => (
+            <div className="nav-item" key={link.href}>
+              <Link
+                onClick={handleNavigation(link.href)}
+                href={link.href}
+                className={pathname === link.href ? 'active' : ''}>
+                {link.label}
+              </Link>
+            </div>
+          ))}
         </div>
         <div className="nav-copy">
           <p>co</p>
