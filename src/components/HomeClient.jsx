@@ -4,7 +4,7 @@ import { useRevealer } from '@/hooks/useRevealer';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import SplitText from 'gsap/SplitText';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 gsap.registerPlugin(SplitText);
 
