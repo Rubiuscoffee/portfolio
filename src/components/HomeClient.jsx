@@ -26,7 +26,7 @@ export default function HomeClient() {
       y: '0%',
       duration: 1.5,
       stagger: 0.1,
-      delay: 1.25,
+      delay: 1.75,
       ease: 'power4.out',
     });
   }, {});
@@ -52,7 +52,10 @@ export default function HomeClient() {
               sizes='(max-width: 900px) 90vw, 95vw'
             />
             */}
-            <h1>Brian is a creative developer based in Colombia, with a passion for building beautiful and functional websites.</h1>
+            <h1>
+
+             Brian is a creative developer focused on building functional websites, with a passion for Computer Vision
+            </h1>
           </div>
         </div>
       </div>

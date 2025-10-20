@@ -5,8 +5,8 @@ import { GeistSans } from 'geist/font/sans';
 import Nav from '@/components/Nav';
 
 export const metadata = {
-  title: 'NextJS Page Transitions | Codegrid',
-  description: 'NextJS Page Transitions | Codegrid',
+  title: 'Brian',
+  description: 'portfolio',
 };
 
 export default function RootLayout({ children }) {
