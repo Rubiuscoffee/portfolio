@@ -39,13 +39,7 @@ export default function ContactClient() {
           </div>
           <div className='col'>
             <div className='contact-copy'>
-              <h2>Collaborations</h2>
-              <h2>brian@rubiuscoffee.dev</h2>
-            </div>
-
-            <div className='contact-copy'>
-              <h2>Inquiries</h2>
-              <h2>hello@rubiuscoffee.dev</h2>
+              <h2>contact@brian.tf</h2>
             </div>
 
             <div className='socials'>
