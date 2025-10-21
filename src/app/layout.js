@@ -1,6 +1,7 @@
 import './globals.css';
 import * as React from 'react';
 import { GeistSans } from 'geist/font/sans';
+import { Analytics } from '@vercel/analytics/react';
 
 import Nav from '@/components/Nav';
 
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
         <body className={GeistSans.className}>
           <Nav />
           {children}
+          <Analytics />
         </body>
       </html>
     </Wrapper>
