@@ -8,7 +8,7 @@ export default function Home() {
   const highlightRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(null);
   const [pendingIndex, setPendingIndex] = useState(null);
-  const [isHovered, setIsHovered] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
   const [isHighlightVisible, setIsHighlightVisible] = useState(true);
   const HIGHLIGHT_COLOR = "#000000";
   const moveToIndexRef = useRef((index) => {});
@@ -61,7 +61,7 @@ export default function Home() {
       setActiveIndex(index);
     };
 
-    // Inicializar en el primer item
+    // Inicializar en el primer item (sin mostrar highlight hasta hover)
     moveToIndexRef.current(0);
 
     return () => {
@@ -79,6 +79,13 @@ export default function Home() {
           setIsHovered(false);
           setActiveIndex(null);
           setPendingIndex(null);
+          // Ocultar visualmente el highlight al salir del contenedor
+          if (highlightRef.current) {
+            highlightRef.current.style.backgroundColor = "transparent";
+            highlightRef.current.style.width = "0px";
+            highlightRef.current.style.height = "0px";
+            highlightRef.current.style.transform = "translate(0, 0)";
+          }
         }}
       >
         <div className="grid">
