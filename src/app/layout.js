@@ -1,7 +1,7 @@
 import './globals.css';
 import * as React from 'react';
 import { GeistSans } from 'geist/font/sans';
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from '@vercel/analytics/next';
 
 import Nav from '@/components/Nav';
 
