@@ -51,17 +51,39 @@ const Slider = () => {
       const imageContainer = document.createElement('div');
       imageContainer.className = 'slide-image';
 
-      const img = document.createElement('img');
       const dataIndex = index % totalSlideCount;
-      img.src = sliderData[dataIndex].img;
-      img.alt = sliderData[dataIndex].title;
+      const item = sliderData[dataIndex] || {};
+      const hasImg = item.img && String(item.img).trim() !== '';
+
+      if (hasImg) {
+        const img = document.createElement('img');
+        img.src = item.img;
+        img.alt = item.title || '';
+        imageContainer.appendChild(img);
+      } else {
+        imageContainer.classList.add('is-placeholder');
+        // Estilos inline mínimos para no tocar CSS global
+        imageContainer.style.display = 'flex';
+        imageContainer.style.alignItems = 'center';
+        imageContainer.style.justifyContent = 'center';
+        imageContainer.style.background = '#1a1a1a';
+
+        const placeholder = document.createElement('div');
+        placeholder.className = 'slide-placeholder';
+        placeholder.textContent = item.placeholder || 'En proceso';
+        placeholder.style.color = '#bbb';
+        placeholder.style.textTransform = 'uppercase';
+        placeholder.style.letterSpacing = '0.08em';
+        placeholder.style.fontSize = '0.85rem';
+        imageContainer.appendChild(placeholder);
+      }
 
       const overlay = document.createElement('div');
       overlay.className = 'slide-overlay';
 
       const title = document.createElement('p');
       title.className = 'project-title';
-      title.textContent = sliderData[dataIndex].title;
+      title.textContent = item.title;
 
       const arrow = document.createElement('div');
       arrow.className = 'project-arrow';
@@ -73,14 +95,13 @@ const Slider = () => {
 
       slide.addEventListener('click', (e) => {
         e.preventDefault();
-        if (state.dragDistance < 10 && !state.hasActuallyDragged) {
-          router.push(sliderData[dataIndex].url);
+        if (state.dragDistance < 10 && !state.hasActuallyDragged && item.url) {
+          router.push(item.url);
         }
       });
 
       overlay.appendChild(title);
       overlay.appendChild(arrow);
-      imageContainer.appendChild(img);
       slide.appendChild(imageContainer);
       slide.appendChild(overlay);
 
