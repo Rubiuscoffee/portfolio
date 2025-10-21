@@ -44,8 +44,8 @@ const Slider = () => {
       slide.className = 'slide';
 
       if (state.isMobile) {
-        slide.style.width = '175px';
-        slide.style.height = '250px';
+        slide.style.width = '340px';
+        slide.style.height = '440px';
       }
 
       const imageContainer = document.createElement('div');
