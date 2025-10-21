@@ -6,8 +6,8 @@ import './Nav.css';
 
 const navLinks = [
   { href: '/', label: 'home' },
-  { href: '/work', label: 'projects' },
-  { href: '/studio', label: 'stack' },
+  { href: '/projects', label: 'projects' },
+  { href: '/stack', label: 'stack' },
   { href: '/contact', label: 'contact' },
 ];
 
@@ -60,7 +60,7 @@ const Nav = () => {
 
   // Prefetch rutas para navegación más rápida
   useEffect(() => {
-    router.prefetch('/work');
+    router.prefetch('/projects');
     router.prefetch('/studio');
     router.prefetch('/contact');
   }, [router]);
