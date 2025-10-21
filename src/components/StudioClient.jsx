@@ -4,6 +4,7 @@ import { useRevealer } from '@/hooks/useRevealer';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import SplitText from 'gsap/SplitText';
+import Grid from '@/components/Grid/grid';
 
 gsap.registerPlugin(SplitText);
 
@@ -32,9 +33,9 @@ export default function StudioClient() {
     <>
       <div className='revealer'></div>
       <div className='studio'>
-        <h1>zajno studio</h1>
+        <h1>stack</h1>
         <div className='studio-img'>
-          <img src='/studio.jpg' alt='' />
+          <Grid />
         </div>
       </div>
     </>

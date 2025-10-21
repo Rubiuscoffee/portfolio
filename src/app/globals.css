@@ -154,6 +154,13 @@ p {
   background-color: var(--bg);
 }
 
+/* Asegura que el contenedor del Grid ocupe el ancho disponible */
+.studio-img {
+  flex: 2;
+  width: 100%;
+  display: block;
+}
+
 .studio .col:nth-child(1),
 .contact .col:nth-child(1) {
   flex: 1;
@@ -201,7 +208,7 @@ p {
   transform-origin: center top;
   background-color: var(--fg);
   pointer-events: none;
-  z-index: 2;
+  z-index: 50;
 }
 
 ::view-transition-old(root),

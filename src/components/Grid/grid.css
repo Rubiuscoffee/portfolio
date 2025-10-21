@@ -1,0 +1,128 @@
+.grid p {
+  text-transform: uppercase;
+  color: #000000;
+  font-size: 13px;
+  font-weight: 500;
+  transition: color 0.25s ease;
+}
+
+
+
+
+
+.container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+.grid {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.grid-row,
+.grid-item {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.grid-row:nth-child(1) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.grid-item:not(:last-child) {
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.grid-item p {
+  position: relative;
+  z-index: 2;
+}
+
+.grid-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  color: rgb(0, 0, 0);
+  transition: transform 0.3s ease, color 0.25s ease;
+}
+
+.grid-item:hover .logo-icon {
+  transform: scale(1.1);
+}
+
+/* Estado activo controlado por JS (highlight) */
+.grid-item.is-active .logo-icon {
+  color: #ffffff;
+}
+
+.grid-item.is-active p {
+  color: #ffffff;
+}
+
+.highlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: white;
+  pointer-events: none;
+  transition: transform 0.25s ease, width 0.25s ease, height 0.25s ease,
+    background-color 0.25s ease;
+  opacity: 1;
+}
+
+@media (max-width: 900px) {
+  footer p:nth-child(2) {
+    text-align: right;
+  }
+
+  .container {
+    height: 100%;
+    min-height: 100svh;
+    padding: 25vh 0;
+  }
+
+  .grid {
+    height: max-content;
+  }
+
+  .grid-row {
+    flex-direction: column;
+  }
+
+  .grid-item {
+    width: 100%;
+    padding: 60px 0;
+  }
+
+  .grid-item:not(:last-child) {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .highlight {
+    display: none;
+  }
+}
