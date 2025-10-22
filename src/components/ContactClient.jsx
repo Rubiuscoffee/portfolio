@@ -42,11 +42,11 @@ export default function ContactClient() {
               <h2>contact@brian.tf</h2>
             </div>
 
-            <div className='socials'>
+            {/* <div className='socials'>
               <p><a href='https://github.com/Rubiuscoffee' target='_blank' rel='noopener noreferrer'>GitHub</a></p>
               <p><a href='https://twitter.com/1946cc' target='_blank' rel='noopener noreferrer'>Twitter</a></p>
               <p><a href='#' target='_blank' rel='noopener noreferrer'>LinkedIn</a></p>
-            </div>
+            </div> */}
           </div>
         </div>
       </ReactLenis>
