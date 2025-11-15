@@ -2,7 +2,8 @@
 
 import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import { sliderData, type SlideItem } from './sliderData';
+import { sliderData, type SlideItem } from '@/features/projects/data/sliderData';
+import '@/features/projects/styles/slider.css'
 
 const Slider = () => {
   const sliderRef = useRef<HTMLDivElement | null>(null);

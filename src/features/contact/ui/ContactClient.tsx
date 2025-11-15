@@ -1,6 +1,7 @@
 'use client';
 
-import { useRevealer } from '@/hooks/useRevealer';
+import { useRevealer } from '@/shared/hooks/useRevealer';
+import '@/features/contact/styles/contact.css'
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import SplitText from 'gsap/SplitText';

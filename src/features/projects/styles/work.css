@@ -1,0 +1,29 @@
+.work {
+  text-align: center;
+  padding: 15em 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  background-color: var(--bg);
+}
+.work .projects {
+  width: 32%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4em;
+}
+.work .projects img {
+  aspect-ratio: 4/5;
+}
+.work .projects .project-img {
+  aspect-ratio: 4/5;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+@media (max-width: 900px) {
+  .work .projects {
+    width: 90%;
+  }
+}

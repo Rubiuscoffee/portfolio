@@ -1,0 +1,40 @@
+.home {
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+  background-color: var(--bg);
+}
+.home .header {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+.home .hero-img h1 {
+  font-size: 5vw;
+  text-align: left;
+  line-height: 1.2;
+  padding: 1rem;
+}
+.hero-img-inner h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+.home .hero-img {
+  position: absolute;
+  left: 50%;
+  bottom: 0%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 50vh;
+  overflow: hidden;
+}
+.hero-img-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}

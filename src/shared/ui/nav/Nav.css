@@ -1,0 +1,22 @@
+.nav-logo .active,
+.nav-item .active {
+  text-decoration: underline;
+}
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  padding: 1em;
+  display: flex;
+  gap: 1em;
+  z-index: 2;
+}
+.nav .col:nth-child(1) {
+  flex: 1;
+}
+.nav .col:nth-child(2) {
+  flex: 2;
+  display: flex;
+  justify-content: space-between;
+}

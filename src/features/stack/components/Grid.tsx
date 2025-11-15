@@ -1,8 +1,8 @@
 "use client";
-import "./grid.css";
+import "@/features/stack/styles/grid.css";
 import { useEffect, useRef, useState, useCallback } from "react";
 import type { TransitionEvent as ReactTransitionEvent } from "react";
-import { LogoIcon } from "./LogoIcon";
+import { LogoIcon } from "@/features/stack/components/LogoIcon";
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement | null>(null);

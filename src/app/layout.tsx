@@ -4,7 +4,7 @@ import { GeistSans } from 'geist/font/sans';
 import { Analytics } from '@vercel/analytics/next';
 import type { Metadata } from 'next'
 
-import Nav from '@/components/Nav';
+import Nav from '@/shared/ui/nav/Nav';
 
 export const metadata: Metadata = {
   title: 'Brian',

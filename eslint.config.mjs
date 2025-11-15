@@ -29,7 +29,7 @@ export default defineConfig([
     },
   },
   {
-    files: ['src/hooks/useRevealer.ts'],
+    files: ['src/shared/hooks/useRevealer.ts'],
     rules: {
       '@typescript-eslint/no-unsafe-argument': 'off',
       '@typescript-eslint/no-unsafe-call': 'off',

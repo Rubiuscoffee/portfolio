@@ -1,0 +1,28 @@
+.studio {
+  padding: 15em 1em;
+  display: flex;
+  gap: 1em;
+  background-color: var(--bg);
+}
+.studio-img {
+  flex: 2;
+  width: 100%;
+  display: block;
+}
+.studio .col:nth-child(1) {
+  flex: 1;
+}
+.studio .col:nth-child(2) {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+.studio .about-img {
+  aspect-ratio: 5/7;
+}
+@media (max-width: 900px) {
+  .studio {
+    flex-direction: column;
+  }
+}

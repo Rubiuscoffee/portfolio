@@ -1,11 +1,12 @@
 'use client';
 
-import { useRevealer } from '@/hooks/useRevealer';
+import { useRevealer } from '@/shared/hooks/useRevealer';
+import '@/features/projects/styles/work.css'
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import SplitText from 'gsap/SplitText';
 import ReactLenis from 'lenis/react';
-import Slider from '@/components/Slider/Slider';
+import Slider from '@/features/projects/components/Slider';
 
 gsap.registerPlugin(SplitText);
 
