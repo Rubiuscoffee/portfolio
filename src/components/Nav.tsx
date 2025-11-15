@@ -1,6 +1,7 @@
 'use client';
 import { useRouter, usePathname } from 'next/navigation';
 import { useEffect } from 'react';
+import type { MouseEvent } from 'react';
 import Link from 'next/link';
 import './Nav.css';
 
@@ -33,7 +34,7 @@ const Nav = () => {
     );
   }
 
-  const handleNavigation = (path) => (e) => {
+  const handleNavigation = (path: string) => (e: MouseEvent<HTMLAnchorElement>) => {
     if (path === pathname) {
       e.preventDefault();
       return;

@@ -2,10 +2,10 @@
 
 import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import { sliderData } from './sliderData';
+import { sliderData, type SlideItem } from './sliderData';
 
 const Slider = () => {
-  const sliderRef = useRef(null);
+  const sliderRef = useRef<HTMLDivElement | null>(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const Slider = () => {
       state.isMobile = window.innerWidth < 1000;
     }
 
-    function createSlideElement(index) {
+    function createSlideElement(index: number) {
       const slide = document.createElement('div');
       slide.className = 'slide';
 
@@ -52,8 +52,8 @@ const Slider = () => {
       imageContainer.className = 'slide-image';
 
       const dataIndex = index % totalSlideCount;
-      const item = sliderData[dataIndex] || {};
-      const hasImg = item.img && String(item.img).trim() !== '';
+      const item: SlideItem = sliderData[dataIndex];
+      const hasImg = !!item.img && String(item.img).trim() !== '';
 
       if (hasImg) {
         const img = document.createElement('img');
@@ -109,7 +109,7 @@ const Slider = () => {
     }
 
     function initializeSlides() {
-      const track = sliderRef.current?.querySelector('.slide-track');
+      const track = sliderRef.current?.querySelector<HTMLDivElement>('.slide-track');
       if (!track) return;
 
       track.innerHTML = '';
@@ -133,7 +133,7 @@ const Slider = () => {
     }
 
     function updateSlidePositions() {
-      const track = sliderRef.current?.querySelector('.slide-track');
+      const track = sliderRef.current?.querySelector<HTMLDivElement>('.slide-track');
       if (!track) return;
 
       const sequenceWidth = state.slideWidth * totalSlideCount;
@@ -149,7 +149,6 @@ const Slider = () => {
       track.style.transform = `translate3d(${state.currentX}px, 0, 0)`;
     }
 
-    function updateParallax() {}
 
     function updateMovingState() {
       state.velocity = Math.abs(state.currentX - state.lastCurrentX);
@@ -176,7 +175,7 @@ const Slider = () => {
       requestAnimationFrame(animate);
     }
 
-    function handleWheel(e) {
+    function handleWheel(e: WheelEvent) {
       if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
         return;
       }
@@ -191,7 +190,7 @@ const Slider = () => {
       );
     }
 
-    function handleTouchStart(e) {
+    function handleTouchStart(e: TouchEvent) {
       state.isDragging = true;
       state.startX = e.touches[0].clientX;
       state.lastX = state.targetX;
@@ -200,7 +199,7 @@ const Slider = () => {
       state.lastScrollTime = Date.now();
     }
 
-    function handleTouchMove(e) {
+    function handleTouchMove(e: TouchEvent) {
       if (!state.isDragging) return;
 
       const deltaX = (e.touches[0].clientX - state.startX) * 1.5;
@@ -221,7 +220,7 @@ const Slider = () => {
       }, 100);
     }
 
-    function handleMouseDown(e) {
+    function handleMouseDown(e: MouseEvent) {
       e.preventDefault();
       state.isDragging = true;
       state.startX = e.clientX;
@@ -232,7 +231,7 @@ const Slider = () => {
       state.lastScrollTime = Date.now();
     }
 
-    function handleMouseMove(e) {
+    function handleMouseMove(e: MouseEvent) {
       if (!state.isDragging) return;
 
       e.preventDefault();

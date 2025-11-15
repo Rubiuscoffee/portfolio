@@ -1,18 +1,19 @@
 "use client";
 import "./grid.css";
 import { useEffect, useRef, useState, useCallback } from "react";
+import type { TransitionEvent as ReactTransitionEvent } from "react";
 import { LogoIcon } from "./LogoIcon";
 
 export default function Home() {
-  const containerRef = useRef(null);
-  const highlightRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(null);
-  const [pendingIndex, setPendingIndex] = useState(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const highlightRef = useRef<HTMLDivElement | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [pendingIndex, setPendingIndex] = useState<number | null>(null);
   const [isHovered, setIsHovered] = useState(false);
   const [isHighlightVisible, setIsHighlightVisible] = useState(true);
   const HIGHLIGHT_COLOR = "#000000";
-  const moveToIndexRef = useRef((index) => {});
-  const handleHighlightTransitionEnd = useCallback((e) => {
+  const moveToIndexRef = useRef<((index: number) => void) | null>(null);
+  const handleHighlightTransitionEnd = useCallback((e: ReactTransitionEvent<HTMLDivElement>) => {
     if (e.propertyName !== "transform") return;
     if (pendingIndex != null) {
       setActiveIndex(pendingIndex);
@@ -34,7 +35,7 @@ export default function Home() {
 
     // Definir función de movimiento y exponerla vía ref
     moveToIndexRef.current = (index) => {
-      const items = container.querySelectorAll(".grid-item");
+      const items = container.querySelectorAll<HTMLDivElement>(".grid-item");
       const element = items[index];
       if (!element) return;
 
@@ -62,7 +63,7 @@ export default function Home() {
     };
 
     // Inicializar en el primer item (sin mostrar highlight hasta hover)
-    moveToIndexRef.current(0);
+    moveToIndexRef.current?.(0);
 
     return () => {
       window.removeEventListener("resize", updateVisibility);
@@ -92,7 +93,7 @@ export default function Home() {
           <div className="grid-row">
             <div
               className={`grid-item${isHovered && isHighlightVisible && activeIndex === 0 ? " is-active" : ""}`}
-              onPointerEnter={() => moveToIndexRef.current(0)}
+              onPointerEnter={() => moveToIndexRef.current?.(0)}
             >
               <div className="grid-content">
                 <LogoIcon type="nextjs" className="logo-icon" />
@@ -101,7 +102,7 @@ export default function Home() {
             </div>
             <div
               className={`grid-item${isHovered && isHighlightVisible && activeIndex === 1 ? " is-active" : ""}`}
-              onPointerEnter={() => moveToIndexRef.current(1)}
+              onPointerEnter={() => moveToIndexRef.current?.(1)}
             >
               <div className="grid-content">
                 <LogoIcon type="typescript" className="logo-icon" />
@@ -110,7 +111,7 @@ export default function Home() {
             </div>
             <div
               className={`grid-item${isHovered && isHighlightVisible && activeIndex === 2 ? " is-active" : ""}`}
-              onPointerEnter={() => moveToIndexRef.current(2)}
+              onPointerEnter={() => moveToIndexRef.current?.(2)}
             >
               <div className="grid-content">
                 <LogoIcon type="tailwind" className="logo-icon" />
@@ -121,7 +122,7 @@ export default function Home() {
           <div className="grid-row">
             <div
               className={`grid-item${isHovered && isHighlightVisible && activeIndex === 3 ? " is-active" : ""}`}
-              onPointerEnter={() => moveToIndexRef.current(3)}
+              onPointerEnter={() => moveToIndexRef.current?.(3)}
             >
               <div className="grid-content">
                 <LogoIcon type="rust" className="logo-icon" />
@@ -130,7 +131,7 @@ export default function Home() {
             </div>
             <div
               className={`grid-item${isHovered && isHighlightVisible && activeIndex === 4 ? " is-active" : ""}`}
-              onPointerEnter={() => moveToIndexRef.current(4)}
+              onPointerEnter={() => moveToIndexRef.current?.(4)}
             >
               <div className="grid-content">
                 <LogoIcon type="html" className="logo-icon" />
@@ -139,7 +140,7 @@ export default function Home() {
             </div>
             <div
               className={`grid-item${isHovered && isHighlightVisible && activeIndex === 5 ? " is-active" : ""}`}
-              onPointerEnter={() => moveToIndexRef.current(5)}
+              onPointerEnter={() => moveToIndexRef.current?.(5)}
             >
               <div className="grid-content">
                 <LogoIcon type="css" className="logo-icon" />
@@ -148,7 +149,7 @@ export default function Home() {
             </div>
             <div
               className={`grid-item${isHovered && isHighlightVisible && activeIndex === 6 ? " is-active" : ""}`}
-              onPointerEnter={() => moveToIndexRef.current(6)}
+              onPointerEnter={() => moveToIndexRef.current?.(6)}
             >
               <div className="grid-content">
                 <LogoIcon type="react" className="logo-icon" />
