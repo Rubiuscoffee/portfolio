@@ -2,7 +2,7 @@
   "name": "codegrid-zajno-page-transitions-nextjs",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@10.14.0",
+  "packageManager": "bun@1.2.19",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
