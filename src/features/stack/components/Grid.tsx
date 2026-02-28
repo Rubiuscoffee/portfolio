@@ -1,25 +1,68 @@
 "use client";
 import "@/features/stack/styles/grid.css";
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useReducer, useCallback } from "react";
 import type { TransitionEvent as ReactTransitionEvent } from "react";
 import { LogoIcon } from "@/features/stack/components/LogoIcon";
+
+type State = {
+  activeIndex: number | null;
+  pendingIndex: number | null;
+  isHovered: boolean;
+  isHighlightVisible: boolean;
+};
+
+type Action =
+  | { type: "SET_VISIBILITY"; visible: boolean }
+  | { type: "ENTER_CONTAINER" }
+  | { type: "SET_PENDING_AND_HOVER"; index: number }
+  | { type: "SET_ACTIVE"; index: number }
+  | { type: "CLEAR_ACTIVE_AND_PENDING" }
+  | { type: "LEAVE" }
+  | { type: "TRANSITION_END" };
+
+const initialState: State = {
+  activeIndex: null,
+  pendingIndex: null,
+  isHovered: false,
+  isHighlightVisible: true,
+};
+
+function reducer(state: State, action: Action): State {
+  switch (action.type) {
+    case "SET_VISIBILITY":
+      return { ...state, isHighlightVisible: action.visible };
+    case "ENTER_CONTAINER":
+      return { ...state, isHovered: true };
+    case "SET_PENDING_AND_HOVER":
+      return { ...state, pendingIndex: action.index, isHovered: true };
+    case "SET_ACTIVE":
+      return { ...state, activeIndex: action.index };
+    case "CLEAR_ACTIVE_AND_PENDING":
+      return { ...state, activeIndex: null, pendingIndex: null };
+    case "LEAVE":
+      return { ...state, isHovered: false, activeIndex: null, pendingIndex: null };
+    case "TRANSITION_END":
+      if (state.pendingIndex != null) {
+        return { ...state, activeIndex: state.pendingIndex, pendingIndex: null };
+      }
+      return state;
+    default:
+      return state;
+  }
+}
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const highlightRef = useRef<HTMLDivElement | null>(null);
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [pendingIndex, setPendingIndex] = useState<number | null>(null);
-  const [isHovered, setIsHovered] = useState(false);
-  const [isHighlightVisible, setIsHighlightVisible] = useState(true);
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { activeIndex, isHovered, isHighlightVisible } = state;
+
   const HIGHLIGHT_COLOR = "#000000";
   const moveToIndexRef = useRef<((index: number) => void) | null>(null);
   const handleHighlightTransitionEnd = useCallback((e: ReactTransitionEvent<HTMLDivElement>) => {
     if (e.propertyName !== "transform") return;
-    if (pendingIndex != null) {
-      setActiveIndex(pendingIndex);
-      setPendingIndex(null);
-    }
-  }, [pendingIndex]);
+    dispatch({ type: "TRANSITION_END" });
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -28,7 +71,7 @@ export default function Home() {
 
     const updateVisibility = () => {
       const display = window.getComputedStyle(highlight).display;
-      setIsHighlightVisible(display !== "none");
+      dispatch({ type: "SET_VISIBILITY", visible: display !== "none" });
     };
     window.addEventListener("resize", updateVisibility);
     updateVisibility();
@@ -39,8 +82,7 @@ export default function Home() {
       const element = items[index];
       if (!element) return;
 
-      setPendingIndex(index);
-      setIsHovered(true);
+      dispatch({ type: "SET_PENDING_AND_HOVER", index });
 
       const rect = element.getBoundingClientRect();
       const containerRect = container.getBoundingClientRect();
@@ -53,13 +95,12 @@ export default function Home() {
       // Control por visibilidad del highlight (móvil)
       const display = window.getComputedStyle(highlight).display;
       if (display === "none") {
-        setActiveIndex(null);
-        setPendingIndex(null);
+        dispatch({ type: "CLEAR_ACTIVE_AND_PENDING" });
         return;
       }
 
       // Activar inmediatamente el item seleccionado (sin esperar a transitionend)
-      setActiveIndex(index);
+      dispatch({ type: "SET_ACTIVE", index });
     };
 
     // Inicializar en el primer item (sin mostrar highlight hasta hover)
@@ -75,11 +116,9 @@ export default function Home() {
       <div
         className="container"
         ref={containerRef}
-        onPointerEnter={() => setIsHovered(true)}
+        onPointerEnter={() => dispatch({ type: "ENTER_CONTAINER" })}
         onPointerLeave={() => {
-          setIsHovered(false);
-          setActiveIndex(null);
-          setPendingIndex(null);
+          dispatch({ type: "LEAVE" });
           // Ocultar visualmente el highlight al salir del contenedor
           if (highlightRef.current) {
             highlightRef.current.style.backgroundColor = "transparent";
